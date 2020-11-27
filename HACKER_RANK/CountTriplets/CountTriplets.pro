@@ -5,3 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp
+
+DISTFILES += \
+	Files/inpt1.txt \
+	Files/inpt4.txt
