@@ -60,6 +60,7 @@ long countTriplets( std::vector< long > arr, long r ) {
       }
     }
   }
+  // lalala
   return res;
 }
 
