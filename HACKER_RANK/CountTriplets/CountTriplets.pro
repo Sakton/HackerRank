@@ -8,4 +8,5 @@ SOURCES += \
 
 DISTFILES += \
 	Files/inpt1.txt \
-	Files/inpt4.txt
+	Files/inpt4.txt \
+	Files/input5.txt
