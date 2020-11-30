@@ -40,7 +40,7 @@ int main( ) {
   std::fstream fin( PATH_TEST5 );
   if ( !fin.is_open( ) ) std::cout << "ERROR" << std::endl;
   long countElements = 0;
-  long k = 0;
+  long long k = 0;
   fin >> countElements >> k;
   // std::cout << countElements << " " << k << std::endl;
   std::vector< long long > inputData( countElements / DELITEL );
@@ -57,6 +57,7 @@ int main( ) {
 }
 
 long long countTriplets( std::vector< long long > arr, long r ) {
+  //еще искать подход...
   if ( r == 1 ) return ( arr.size( ) * ( arr.size( ) - 1 ) * ( arr.size( ) - 2 ) ) / 6;
   using value_type = int64_t;
   using tpl = std::tuple< value_type, value_type, value_type >;
