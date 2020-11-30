@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <numeric>
+#include <tuple>
 #include <vector>
 
 /*
@@ -12,55 +14,66 @@ test5 = 2325652489
 */
 
 // Complete the countTriplets function below.
-long countTriplets( std::vector< long > arr, long r );
+long long countTriplets( std::vector< long long > arr, long r );
 const std::string PATH_TEST1 = "../../HACKER_RANK/CountTriplets/Files/inpt1.txt";
+const std::string PATH_TEST4 = "../../HACKER_RANK/CountTriplets/Files/inpt4.txt";
 const std::string PATH_TEST3 = "../../HACKER_RANK/CountTriplets/Files/input5.txt";
 const int DELITEL = 1;
 
 int main( ) {
-  std::vector< long > inputData { 1, 2, 2, 4 };
-  std::cout << countTriplets( inputData, 2 );
-  //  std::vector< long > inputData { 1, 3, 9, 9, 27, 81 };
+  //  std::vector< long long > inputData { 1, 2, 2, 4 };
+  //  std::cout << countTriplets( inputData, 2 );
+  //  std::vector< long long > inputData { 1, 3, 9, 9, 27, 81 };
   //  std::cout << countTriplets( inputData, 3 );
-  //  std::vector< long > inputData { 1, 5, 5, 25, 125 };
+  //  std::vector< long long > inputData { 1, 5, 5, 25, 125 };
   //  std::cout << countTriplets( inputData, 5 );
+  //  std::vector< long long > inputData { 1, 2, 1, 2, 4, 1, 2, 1, 2, 4 };
+  //  std::cout << countTriplets( inputData, 2 );
 
   //***
 
-  //  std::fstream fin( PATH_TEST3 );
-  //  if ( !fin.is_open( ) ) std::cout << "ERROR" << std::endl;
-  //  long countElements = 0;
-  //  long k = 0;
-  //  fin >> countElements >> k;
-  //  // std::cout << countElements << " " << k << std::endl;
-  //  std::vector< long > inputData( countElements / DELITEL );
-  //  for ( int i = 0; i < countElements / DELITEL; ++i ) {
-  //    fin >> std::skipws >> inputData[ i ];
-  //  }
-  //  // std::cout << inputData.size( );
-  //  std::cout << countTriplets( inputData, k );
+  std::fstream fin( PATH_TEST4 );
+  if ( !fin.is_open( ) ) std::cout << "ERROR" << std::endl;
+  long countElements = 0;
+  long k = 0;
+  fin >> countElements >> k;
+  // std::cout << countElements << " " << k << std::endl;
+  std::vector< long long > inputData( countElements / DELITEL );
+  for ( int i = 0; i < countElements / DELITEL; ++i ) {
+    fin >> std::skipws >> inputData[ i ];
+  }
+  //  std::cout << inputData.size( );
+  std::cout << countTriplets( inputData, k );
 }
 
-long countTriplets( std::vector< long > arr, long r ) {
-  //  std::sort( arr.begin( ), arr.end( ) );
-  //  for ( auto &el : arr ) {
-  //    std::cout << el << " ";
-  //  }
-  //  return 0;
-  //  std::map< long, long > counts;
-  //  for ( auto const &el : arr ) counts[ el ]++;
-  //  for ( auto const &el : counts ) std::cout << el.first << " --- " << el.second << std::endl;
-  std::map< long, long > elemCount;
-  int res = 0;
-  for ( size_t i = 0; i < arr.size( ); ++i ) {
-    elemCount[ arr[ i ] ]++;
-    if ( elemCount.find( ( arr[ i ] / r ) ) != elemCount.end( ) ) {
-      if ( elemCount.find( ( arr[ i ] / ( r * r ) ) ) != elemCount.end( ) ) {
-        res += elemCount[ arr[ i ] / r ] + elemCount[ arr[ i ] / ( r * r ) ];
-      }
+long long countTriplets( std::vector< long long > arr, long r ) {
+  // FIXME нет крайних случаев
+  using value_type = long long;
+  using tpl = std::tuple< value_type, value_type, value_type >;
+  std::map< value_type, value_type > elements;
+  std::map< tpl, value_type > triads;
+  for ( auto it = arr.crbegin( ); it != arr.crend( ); ++it ) {
+    //если считать его первым в тройке
+    value_type el1 = *it;
+    value_type el2 = el1 * r;
+    value_type el3 = el2 * r;
+    if ( elements.find( el2 ) != elements.cend( ) && elements.find( el3 ) != elements.cend( ) ) {  //если оба элемента уже были
+      //то можно составить тройку
+      tpl triad( el1, el2, el3 );
+      triads[ triad ] += elements[ el2 ] * elements[ el3 ];
     }
+    //после того как посчитали по конкретному первому элементу
+    //можно внести текущий в карту, тем самым разрешить его использование в расчете троек
+    elements[ el1 ]++;
   }
-  // lalala
+  //когда все прошли считаем
+
+  value_type res =
+      std::accumulate( triads.cbegin( ), triads.cend( ), 0,
+                       [ & ]( value_type var, const std::map< tpl, value_type >::value_type& pair ) { return var + pair.second; } );
+  value_type xxx = 0;
+  for ( auto el : triads ) xxx += el.second;
+  std::cout << "xxx = " << xxx << std::endl;
   return res;
 }
 
