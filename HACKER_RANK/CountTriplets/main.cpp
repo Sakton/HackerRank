@@ -58,40 +58,40 @@ int main( ) {
   std::cout << countTriplets( inputData, k );
 }
 
-// bool findes( const std::map< long long, long long >& map, long long el ) { return map.find( el ) != map.end( ); }
+bool findes( const std::map< long long, long long >& map, long long el ) { return map.find( el ) != map.end( ); }
 
-// long long countTriplets( std::vector< long long > arr, long r ) {
-//  //если r = 1, то ответ дать сразу
-//  long long count = 0;
-//  //  if ( r == 1 )
-//  //    count = ( arr.size( ) * ( arr.size( ) - 1 ) * ( arr.size( ) - 2 ) ) / 6;
-//  //  else {
-//  // 2 карты:
-//  // №1 будет отслеживать номера - key = само число, value = его количество
-//  // №2 будет отслеживать ситуацию когда есть парный к текущему
-//  std::map< long long, long long > elem;
-//  std::map< long long, long long > pairs;
-//  for ( auto it = arr.crbegin( ); it != arr.crend( ); ++it ) {
-//    //если есть
-//    if ( findes( pairs, *it * r ) ) {
-//      count += pairs[ *it * r ];
-//    }
-//    if ( findes( elem, *it * r ) ) {
-//      if ( findes( pairs, *it ) ) {
-//        pairs[ *it ] += elem[ *it * r ];
-//      } else {
-//        pairs[ *it ] = elem[ *it * r ];
-//      }
-//    }
-//    if ( findes( elem, *it ) ) {
-//      elem[ *it ]++;
-//    } else {
-//      elem[ *it ] = 1;
-//    }
-//  }
-//  //}
-//  return count;
-//}
+long long countTriplets( std::vector< long long > arr, long r ) {
+  //если r = 1, то ответ дать сразу
+  long long count = 0;
+  //  if ( r == 1 )
+  //    count = ( arr.size( ) * ( arr.size( ) - 1 ) * ( arr.size( ) - 2 ) ) / 6;
+  //  else {
+  // 2 карты:
+  // №1 будет отслеживать номера - key = само число, value = его количество
+  // №2 будет отслеживать ситуацию когда есть парный к текущему
+  std::map< long long, long long > elem;
+  std::map< long long, long long > pairs;
+  for ( auto it = arr.crbegin( ); it != arr.crend( ); ++it ) {
+    //если есть
+    if ( findes( pairs, *it * r ) ) {
+      count += pairs[ *it * r ];
+    }
+    if ( findes( elem, *it * r ) ) {
+      if ( findes( pairs, *it ) ) {
+        pairs[ *it ] += elem[ *it * r ];
+      } else {
+        pairs.insert( std::map< long long, long long >::value_type( *it, elem[ *it * r ] ) );
+      }
+    }
+    if ( findes( elem, *it ) ) {
+      elem[ *it ]++;
+    } else {
+      elem.insert( std::map< long long, long long >::value_type( *it, 1 ) );
+    }
+  }
+  //}
+  return count;
+}
 
 // long long countTriplets( std::vector< long long > arr, long r ) {
 //  std::map< long long, long long > nums;
