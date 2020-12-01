@@ -56,6 +56,65 @@ class Cache {
 
 class LRUCache : public Cache {
  public:
+  LRUCache( long c ) {
+    cp = c;
+    tail = head = nullptr;
+  };
+
+  // Cache interface
+ public:
+  void set( int k, int v ) override {
+    if ( head == nullptr && tail == head ) {
+      mp[ k ] = new Node( k, v );
+      head = tail = mp[ k ];
+      return;
+    }
+    auto it = mp.find( k );
+    if ( it != mp.end( ) ) {  //есть элемент в КЭШЕ
+      Node* A = it->second;
+      A->value = v;
+      if ( A == head ) return;  //если голова
+      A->prev->next = A->next;  //общая для всех
+      if ( A == tail ) {        //если хвост
+        tail = A->prev;
+      } else {
+        A->next->prev = A->prev;
+      }
+      //вставка в голову любого
+      A->next = head;
+      A->prev = head->prev;
+      head->prev = A;
+      head = A;
+    } else {
+      //нет такого, то вставляем его в голову
+      Node* B = new Node( head->prev, head, k, v );
+      mp[ k ] = B;
+      head->prev = B;
+      head = B;
+
+      if ( mp.size( ) > static_cast< map< int, Node* >::size_type >( cp ) )  //если уже много, то уберу последний
+      {
+        Node* D = tail;
+        tail = D->prev;
+        tail->next = D->next;
+        mp.erase( D->key );
+        delete D;
+      }
+    }
+  }
+
+  int get( int k ) override {
+    //только чтение, ничего не менять тут, все изменения в set
+    auto it = mp.find( k );
+    if ( it != mp.end( ) ) return it->second->value;
+    return -1;
+  }
+};
+
+/*
+
+class LRUCache : public Cache {
+ public:
   explicit LRUCache( int cap ) {
     cp = cap;
     tail = nullptr;
@@ -65,46 +124,65 @@ class LRUCache : public Cache {
  public:
   void set( int k, int v ) override {
     Node* tmp = new Node( k, v );
-    if ( cp ) {
+    if ( !cp ) {
+      mp.erase( tail->key );
+      Node* del = tail;
+      tail = tail->prev;
+      tail->next = nullptr;
+      delete del;
+      ++cp;
+    } else {
       if ( head == nullptr && tail == nullptr ) {
         head = tail = tmp;
       } else {
-        //        tmp->prev = tail;
-        //        tail->next = tmp;
-        //        tail = tmp;
         tmp->next = head;
         head->prev = tmp;
         head = tmp;
       }
       mp.insert( std::make_pair( k, tmp ) );
       --cp;
-    } else {
-      tmp->next = head;
-      head->prev = tmp;
-      head = tmp;
-
-      // FIXME
-
-      Node* del = tail;
-      tail = tail->prev;
-      tail->next = nullptr;
-      delete del;
     }
-
-    Node* t = head;
-    while ( t ) {
-      cout << "key = " << t->key << " val = " << t->value << std::endl;
-      t = t->next;
-    }
-    std::cout << "//****//" << std::endl;
   }
 
-  int get( int key ) override { return ( mp.find( key ) != mp.end( ) ) ? mp.find( key )->second->value : -1; };
+  int get( int key ) override {
+    int res = -1;
+    if ( mp.find( key ) != mp.end( ) ) {
+      res = mp.find( key )->second->value;
+      Node* t1 = head;
+      while ( t1 != nullptr && t1->key != key ) {
+        t1 = t1->next;
+      }
+      if ( t1 != nullptr && t1 != head ) {
+        t1->prev->next = t1->next;
+        if ( t1->next != nullptr ) {
+          t1->next->prev = t1->prev;
+        }
+        t1->next = head;
+        t1->prev = head->prev;
+        head->prev = t1;
+        head = t1;
+      }
+    }
+    return res;
+  };
 };
 
+*/
+
+/*
+    Node* t1 = head;
+    while ( t1 ) {
+      std::cout << "key = " << t1->key << " value = " << t1->value << std::endl;
+      t1 = t1->next;
+    }
+ * */
+
 int main( ) {
-  std::ifstream fin( "../../Polymorphism/file" );
+  std::ifstream fin( "../../Polymorphism/test5" );
   if ( !fin ) std::cout << "ERROR FILE";
+
+  std::ifstream fin2( "../../Polymorphism/answer5" );
+
   //  std::cout << fin.rdbuf( ) << std::endl;
   cin.rdbuf( fin.rdbuf( ) );
   //  cout << cin.rdbuf( );
@@ -117,6 +195,9 @@ int main( ) {
     cin >> command;
     if ( command == "get" ) {
       int key;
+      //*****
+
+      //*****
       cin >> key;
       cout << l.get( key ) << endl;
     } else if ( command == "set" ) {

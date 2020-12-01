@@ -7,4 +7,6 @@ SOURCES += \
         main.cpp
 
 DISTFILES += \
-	file
+	answer5 \
+	file \
+	test5
