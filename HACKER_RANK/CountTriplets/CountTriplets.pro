@@ -11,4 +11,5 @@ DISTFILES += \
 	Files/inpt4.txt \
 	Files/input5.txt \
 	Files/input6.txt \
-	Files/input7.txt
+	Files/input7.txt \
+	Table.ods
