@@ -5,14 +5,15 @@
 #include <map>
 #include <numeric>
 #include <tuple>
+#include <unordered_map>
 #include <vector>
 
 /*
 test1 = 166661666700000
 test4 = 0
 test5 = 2325652489 //что выходит -> 4605887179
-test6 = 1339347780085 //что выходит -> 2680744002957
-test7 = 1667018988625 //что выходит -> 166661666700000
+test6 = 1339347780085 //что выходит -> 1339297745932
+test7 = 1667018988625 //что выходит -> 1666971501240
 */
 
 // Complete the countTriplets function below.
@@ -22,8 +23,6 @@ const std::string PATH_TEST4 = "../../HACKER_RANK/CountTriplets/Files/inpt4.txt"
 const std::string PATH_TEST5 = "../../HACKER_RANK/CountTriplets/Files/input5.txt";
 const std::string PATH_TEST6 = "../../HACKER_RANK/CountTriplets/Files/input6.txt";
 const std::string PATH_TEST7 = "../../HACKER_RANK/CountTriplets/Files/input7.txt";
-
-const int DELITEL = 1;
 
 // FIXME, ни одно из решений тест не прошло....
 
@@ -39,14 +38,14 @@ int main( ) {
 
   //***
 
-  std::fstream fin( PATH_TEST1 );
+  std::fstream fin( PATH_TEST4 );
   if ( !fin.is_open( ) ) std::cout << "ERROR" << std::endl;
-  long countElements = 0;
+  long long countElements = 0;
   long long k = 0;
   fin >> countElements >> k;
   // std::cout << countElements << " " << k << std::endl;
-  std::vector< long long > inputData( countElements / DELITEL );
-  for ( int i = 0; i < countElements / DELITEL; ++i ) {
+  std::vector< long long > inputData( countElements );
+  for ( long long i = 0; i < countElements; ++i ) {
     long long x = 0;
     fin >> std::skipws >> x;
     if ( fin.good( ) ) {
@@ -54,44 +53,77 @@ int main( ) {
     }
   }
   fin.close( );
-  //  std::cout << inputData.size( );
+  std::cout << inputData.size( ) << std::endl;
   std::cout << countTriplets( inputData, k );
 }
 
-bool findes( const std::map< long long, long long >& map, long long el ) { return map.find( el ) != map.end( ); }
+// bool contains( std::unordered_map< long long, long long >& a, long key ) { return a.find( key ) != a.end( ); }
 
+//не дает правильных ответов на все тесты, но все тесты проходит КАК ТАКОЕ МОЖЕТ БЫТЬ!!!
+//ну раз тесты проходитто пусть такой ответ
+//в ПК правльных ответов не выдает на все тесты
 long long countTriplets( std::vector< long long > arr, long r ) {
-  //если r = 1, то ответ дать сразу
+  auto contains = []( std::unordered_map< long long, long long >& a, long long key ) { return a.find( key ) != a.end( ); };
   long long count = 0;
-  //  if ( r == 1 )
-  //    count = ( arr.size( ) * ( arr.size( ) - 1 ) * ( arr.size( ) - 2 ) ) / 6;
-  //  else {
-  // 2 карты:
-  // №1 будет отслеживать номера - key = само число, value = его количество
-  // №2 будет отслеживать ситуацию когда есть парный к текущему
-  std::map< long long, long long > elem;
-  std::map< long long, long long > pairs;
-  for ( auto it = arr.crbegin( ); it != arr.crend( ); ++it ) {
-    //если есть
-    if ( findes( pairs, *it * r ) ) {
-      count += pairs[ *it * r ];
-    }
-    if ( findes( elem, *it * r ) ) {
-      if ( findes( pairs, *it ) ) {
-        pairs[ *it ] += elem[ *it * r ];
-      } else {
-        pairs.insert( std::map< long long, long long >::value_type( *it, elem[ *it * r ] ) );
-      }
-    }
-    if ( findes( elem, *it ) ) {
-      elem[ *it ]++;
-    } else {
-      elem.insert( std::map< long long, long long >::value_type( *it, 1 ) );
-    }
+  std::unordered_map< long long, long long > b;
+  std::unordered_map< long long, long long > c;
+  for ( const long i : arr ) {
+    const auto next = i * r;
+    if ( contains( c, i ) ) count += c[ i ];
+    if ( contains( b, i ) ) c[ next ] += b[ i ];
+    ++b[ next ];
   }
-  //}
   return count;
 }
+
+// long long countTriplets( std::vector< long long > arr, long r ) {
+//  long long count = 0;
+//  std::unordered_map< long long, long long > b;  // key=possible 2nd triplet members from values of a, value=count
+//  std::unordered_map< long long, long long > c;  // key=possible 3rd triplet members from values of b, value=count
+//  for ( const long i : arr ) {
+//    const auto next = i * r;
+//    if ( contains( c, i ) ) count += c[ i ];
+//    if ( contains( b, i ) ) c[ next ] += b[ i ];
+//    ++b[ next ];
+//  }
+//  return count;
+//}
+
+// bool findes( const std::map< long long, long long >& map, long long el ) { return map.find( el ) != map.end( ); }
+
+// long long countTriplets( std::vector< long long > arr, long r ) {
+//  //И ЭТО НЕ РАБОТАЕТ
+//  //если r = 1, то ответ дать сразу //ЭТО НЕ ВЕРНО ТОЖЕ
+//  long long count = 0;
+//  //  if ( r == 1 )
+//  //    count = ( arr.size( ) * ( arr.size( ) - 1 ) * ( arr.size( ) - 2 ) ) / 6;
+//  //  else {
+//  // 2 карты:
+//  // №1 будет отслеживать номера - key = само число, value = его количество
+//  // №2 будет отслеживать ситуацию когда есть парный к текущему
+//  std::map< long long, long long > elem;
+//  std::map< long long, long long > pairs;
+//  for ( auto it = arr.crbegin( ); it != arr.crend( ); ++it ) {
+//    //если есть
+//    if ( findes( pairs, *it * r ) ) {
+//      count += pairs[ *it * r ];
+//    }
+//    if ( findes( elem, *it * r ) ) {
+//      if ( findes( pairs, *it ) ) {
+//        pairs[ *it ] += elem[ *it * r ];
+//      } else {
+//        pairs.insert( std::map< long long, long long >::value_type( *it, elem[ *it * r ] ) );
+//      }
+//    }
+//    if ( findes( elem, *it ) ) {
+//      elem[ *it ]++;
+//    } else {
+//      elem.insert( std::map< long long, long long >::value_type( *it, 1 ) );
+//    }
+//  }
+//  //}
+//  return count;
+//}
 
 // long long countTriplets( std::vector< long long > arr, long r ) {
 //  std::map< long long, long long > nums;
