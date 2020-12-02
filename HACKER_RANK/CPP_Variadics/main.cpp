@@ -3,13 +3,17 @@ using namespace std;
 
 // https://habr.com/ru/post/101430/
 
-// template < int n, bool... digits >
-// auto reversed_binary_value( int n, bool digits ) {}
-
 template < bool... digits >
-void reversed_binary_value( ) {
-  if ( sizeof...( digits ) == 0 ) std::cout << '0' << ' ';
-  // std::cout << return sizeof...( digits );
+uint64_t reversed_binary_value( ) {
+  bool array[ sizeof...( digits ) ] { digits... };
+  uint64_t res = 0;
+  uint64_t k = 1;
+  res = array[ 0 ];
+  for ( uint64_t i = 1; i < sizeof...( digits ); ++i ) {
+    k *= 2;
+    res += array[ i ] * k;
+  }
+  return res;
 }
 
 template < int n, bool... digits >
@@ -29,8 +33,8 @@ struct CheckValues< 0, digits... > {
 };
 
 int main( ) {
-  reversed_binary_value< 0, 0, 1 >( );
-  // std::cout << reversed_binary_value< 0, 0, 1 >( );
+  // reversed_binary_value< 0, 1, 1, 0, 1 >( );
+  std::cout << reversed_binary_value< 1, 1, 1, 1, 1, 1 >( );
 
   //  int t;
   //  std::cin >> t;
