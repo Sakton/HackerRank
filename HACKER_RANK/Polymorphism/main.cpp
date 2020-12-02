@@ -70,23 +70,23 @@ class LRUCache : public Cache {
       return;
     }
     auto it = mp.find( k );
-    if ( it != mp.end( ) ) {  //есть элемент в КЭШЕ
+    if ( it != mp.end( ) ) {  // есть элемент в КЭШЕ
       Node* A = it->second;
       A->value = v;
-      if ( A == head ) return;  //если голова
-      A->prev->next = A->next;  //общая для всех
-      if ( A == tail ) {        //если хвост
+      if ( A == head ) return;  // если голова
+      A->prev->next = A->next;  // общая для всех
+      if ( A == tail ) {        // если хвост
         tail = A->prev;
       } else {
         A->next->prev = A->prev;
       }
-      //вставка в голову любого
+      // вставка в голову любого
       A->next = head;
       A->prev = head->prev;
       head->prev = A;
       head = A;
     } else {
-      //нет такого, то вставляем его в голову
+      // нет такого, то вставляем его в голову
       Node* B = new Node( head->prev, head, k, v );
       mp[ k ] = B;
       head->prev = B;
@@ -104,7 +104,7 @@ class LRUCache : public Cache {
   }
 
   int get( int k ) override {
-    //только чтение, ничего не менять тут, все изменения в set
+    // только чтение, ничего не менять тут, все изменения в set
     auto it = mp.find( k );
     if ( it != mp.end( ) ) return it->second->value;
     return -1;
