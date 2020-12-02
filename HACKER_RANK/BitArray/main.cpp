@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdio>
 #include <iostream>
+#include <set>
 #include <vector>
 
 /*
@@ -19,13 +20,32 @@ int main( ) {
   std::vector< int64_t > a( n );
   const uint64_t MASK = 1 << 31;
   a[ 0 ] = s % MASK;
+  std::set< int64_t > aa;
+  aa.insert( a[ 0 ] );
   for ( int i = 1; i < n; ++i ) {
-    a[ i ] = ( a[ i - 1 ] * p + q ) % MASK;
+    aa.insert( a[ i ] = ( a[ i - 1 ] * p + q ) % MASK );
   }
-  std::sort( a.begin( ), a.end( ) );
-  a.erase( std::unique( a.begin( ), a.end( ) ), a.end( ) );
-  cout << a.size( );
+  //  std::sort( a.begin( ), a.end( ) );
+  //  a.erase( std::unique( a.begin( ), a.end( ) ), a.end( ) );
+  cout << aa.size( );
 }
+
+//долго!!
+// int main( ) {
+//  int64_t n, s, p, q;
+//  cin >> n >> s >> p >> q;
+//  std::vector< int64_t > a( n );
+//  const uint64_t MASK = 1 << 31;
+//  a[ 0 ] = s % MASK;
+//  std::set< int64_t > aa;
+//  aa.insert( a[ 0 ] );
+//  for ( int i = 1; i < n; ++i ) {
+//    aa.insert( a[ i ] = ( a[ i - 1 ] * p + q ) % MASK );
+//  }
+//  //  std::sort( a.begin( ), a.end( ) );
+//  //  a.erase( std::unique( a.begin( ), a.end( ) ), a.end( ) );
+//  cout << aa.size( );
+//}
 
 //долго!! но тест проходит ... минута
 // int main( ) {
