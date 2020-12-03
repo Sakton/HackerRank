@@ -3,8 +3,6 @@
 
 using namespace std;
 
-// FIXME ТУТ
-
 int divisibleSumPairs( int n, int k, vector< int > ar ) {
   int x = 0;
   for ( int i = 0; i < n - 1; ++i )
