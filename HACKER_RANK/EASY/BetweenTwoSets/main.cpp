@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <vector>
 
 using namespace std;
@@ -34,9 +35,29 @@ int getTotalX( vector< int > a, vector< int > b ) {
   return d.size( );
 }
 
+void osnovnayaTeoremaArifmetici( int n ) {
+  std::vector< int > res;
+  std::map< int, int > mapres;
+  int d = 2;
+  while ( n > 1 ) {
+    while ( n % d == 0 ) {
+      n /= d;
+      res.push_back( d );
+      mapres[ d ]++;
+    }
+    ++d;
+  }
+  for ( auto el : res ) std::cout << el << " ";
+  std::cout << std::endl;
+  for ( auto x : mapres ) std::cout << x.first << " : " << x.second << std::endl;
+}
+
 int main( ) { /*std::cout << */
+
+  osnovnayaTeoremaArifmetici( 1164 );
+
   // getTotalX( { 2, 4 }, { 16, 32, 96 } );
   // getTotalX( { 2, 6 }, { 24, 36 } );
   // getTotalX( { 3, 4 }, { 24, 48 } );
-  getTotalX( { 3, 9, 6 }, { 36, 72 } );
+  // getTotalX( { 3, 9, 6 }, { 36, 72 } );
 }
