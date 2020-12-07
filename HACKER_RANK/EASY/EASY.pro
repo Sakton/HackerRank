@@ -5,6 +5,7 @@ SUBDIRS += \
 	BetweenTwoSets \
 	BillDivision \
 	BreakingTheRecords \
+	CatsAndMouse \
 	DayOfTheProgrammer \
 	DivisibleSumPairs \
 	DrawingBook \
