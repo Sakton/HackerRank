@@ -5,5 +5,6 @@ SUBDIRS += \
 	CPP_Variadics \
 	CountTriplets \
 	EASY \
+	MEDIUM \
 	MagicSpells \
 	Polymorphism
