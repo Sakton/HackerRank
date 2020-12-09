@@ -13,4 +13,5 @@ SUBDIRS += \
 	GradingStudents \
 	MigratoryBirds \
 	NumberLineJumps \
+	PickingNumbers \
 	SubArrayDivision
