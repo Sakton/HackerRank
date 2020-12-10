@@ -17,10 +17,28 @@ int main( ) {
           10,
       },
       { 5, 25, 50, 120 } );
-  for ( auto el : r ) std::cout << el << " ";
+  // for ( auto el : r ) std::cout << el << " ";
 }
 
-std::vector< int > climbingLeaderboard( std::vector< int > ranked, std::vector< int > player ) {}
+std::vector< int > climbingLeaderboard( std::vector< int > ranked, std::vector< int > player ) {
+  // 1. intervals
+  std::vector< int >::size_type i = 0, j = 1;
+  while ( j < ranked.size( ) ) {
+    while ( ( j < ranked.size( ) ) && ( ranked[ i ] == ranked[ j ] ) ) {
+      ++j;
+    }
+    // *** print
+    std::vector< int >::size_type k = i;
+    while ( k < j && k < ranked.size( ) ) {
+      std::cout << ranked[ k ] << " ";
+      ++k;
+    }
+    std::cout << std::endl;
+    // ***
+    i = j;
+  }
+  return { };
+}
 
 // Time limit exceeded
 // std::vector< int > climbingLeaderboard( std::vector< int > ranked, std::vector< int > player ) {
