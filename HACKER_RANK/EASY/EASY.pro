@@ -7,6 +7,7 @@ SUBDIRS += \
 	BreakingTheRecords \
 	CatsAndMouse \
 	DayOfTheProgrammer \
+	DesignerPDViewer \
 	DivisibleSumPairs \
 	DrawingBook \
 	ElectronicsShop \
@@ -14,4 +15,6 @@ SUBDIRS += \
 	MigratoryBirds \
 	NumberLineJumps \
 	PickingNumbers \
-	SubArrayDivision
+	SubArrayDivision \
+	TheHurdleRace \
+	UtopianTree
