@@ -1,11 +1,14 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+	AngryProfessor \
 	AppleAndOrange \
+	BeautifulDaysAtTheMovies \
 	BetweenTwoSets \
 	BillDivision \
 	BreakingTheRecords \
 	CatsAndMouse \
+	CircularArrayRotation \
 	DayOfTheProgrammer \
 	DesignerPDViewer \
 	DivisibleSumPairs \
@@ -15,6 +18,8 @@ SUBDIRS += \
 	MigratoryBirds \
 	NumberLineJumps \
 	PickingNumbers \
+	SaveThePrisoner \
 	SubArrayDivision \
 	TheHurdleRace \
-	UtopianTree
+	UtopianTree \
+	ViralAdvertising
