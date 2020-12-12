@@ -19,6 +19,7 @@ SUBDIRS += \
 	NumberLineJumps \
 	PickingNumbers \
 	SaveThePrisoner \
+	SequenceEquation \
 	SubArrayDivision \
 	TheHurdleRace \
 	UtopianTree \
