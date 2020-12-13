@@ -15,6 +15,7 @@ SUBDIRS += \
 	DrawingBook \
 	ElectronicsShop \
 	GradingStudents \
+	JumpingOnTheCloudsRevisited \
 	MigratoryBirds \
 	NumberLineJumps \
 	PickingNumbers \
