@@ -14,6 +14,7 @@ SUBDIRS += \
 	DivisibleSumPairs \
 	DrawingBook \
 	ElectronicsShop \
+	FindDigits \
 	GradingStudents \
 	JumpingOnTheCloudsRevisited \
 	MigratoryBirds \
