@@ -12,6 +12,14 @@ int main( ) {
   // std::cout << appendAndDelete( "zzzzz", "zzzzzzz", 4 );  // Yes
 }
 
+// std::string appendAndDelete( std::string s, std::string t, int k ) {
+//  std::string::size_type i = 0;
+//  while ( i < ( std::min( s.size( ), t.size( ) ) ) && s[ i ] == t[ i ] ) ++i;
+//  int x = s.size( ) + t.size( ) - 2 * i;
+//  if ( ( x % 2 == k % 2 ) || ( static_cast< int >( s.size( ) + t.size( ) ) < k ) ) return "Yes";
+//  return "No";
+//}
+
 std::string appendAndDelete( std::string s, std::string t, int k ) {
   std::string::size_type i = 0;
   while ( i < ( std::min( s.size( ), t.size( ) ) ) && s[ i ] == t[ i ] ) ++i;
