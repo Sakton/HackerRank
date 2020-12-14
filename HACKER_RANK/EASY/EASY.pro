@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
 	AngryProfessor \
+	AppenAandDelete \
 	AppleAndOrange \
 	BeautifulDaysAtTheMovies \
 	BetweenTwoSets \
