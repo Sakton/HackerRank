@@ -14,25 +14,30 @@ class BigFactorial {
       mult( n );
       --n;
     }
-    //    while ( fact_.back( ) == 0 ) fact_.pop_back( );
     auto t = std::find_if( fact_.begin( ), fact_.end( ), []( int x ) { return ( x != 0 ); } );
     fact_.erase( fact_.begin( ), t );
-    //    std::reverse( fact_.begin( ), fact_.end( ) );
-    for ( auto el : fact_ ) std::cout << el;
-    std::cout << std::endl;
   }
 
+  void print( ) const {
+    for ( type::size_type i = 0; i < fact_.size( ); ++i ) {
+      int k = 0;
+      if ( i ) {
+        if ( fact_[ i ] < 10 ) {
+          k = 3;
+        } else if ( fact_[ i ] < 100 ) {
+          k = 2;
+        } else if ( fact_[ i ] < 1000 ) {
+          k = 1;
+        }
+        for ( int i = 0; i < k; ++i ) std::cout << 0;
+      }
+      std::cout << fact_[ i ];
+    }
+  }
+
+ private:
   void mult( int n ) {
     type t( fact_.size( ) + 1 );
-    //    for ( type::size_type i = 0; i < fact_.size( ); ++i ) {
-    //      int a = fact_[ i ] * n;
-    //      t[ i ] = a;
-    //    }
-    //    for ( type::size_type i = 0; i < t.size( ) - 1; ++i ) {
-    //      t[ i + 1 ] += t[ i ] / BASE;
-    //      t[ i ] %= BASE;
-    //    }
-
     for ( int i = fact_.size( ) - 1; i >= 0; --i ) {
       int a = fact_[ i ] * n;
       t[ i + 1 ] = a;
@@ -41,7 +46,6 @@ class BigFactorial {
       t[ i - 1 ] += t[ i ] / BASE;
       t[ i ] %= BASE;
     }
-
     fact_.swap( t );
   }
 
@@ -51,6 +55,6 @@ class BigFactorial {
 
 int main( ) {
   BigFactorial b;
-  // TODO на 20 факториале проблемы с нулями
-  b.factorial( 19 );
+  b.factorial( 50 );
+  b.print( );
 }
