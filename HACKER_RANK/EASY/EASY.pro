@@ -18,6 +18,7 @@ SUBDIRS += \
 	FindDigits \
 	GradingStudents \
 	JumpingOnTheCloudsRevisited \
+	LibraryFine \
 	MigratoryBirds \
 	NumberLineJumps \
 	PickingNumbers \
