@@ -10,6 +10,7 @@ SUBDIRS += \
 	BreakingTheRecords \
 	CatsAndMouse \
 	CircularArrayRotation \
+	CutTheSticks \
 	DayOfTheProgrammer \
 	DesignerPDViewer \
 	DivisibleSumPairs \
