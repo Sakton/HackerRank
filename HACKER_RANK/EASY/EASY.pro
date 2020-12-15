@@ -23,6 +23,7 @@ SUBDIRS += \
 	PickingNumbers \
 	SaveThePrisoner \
 	SequenceEquation \
+	SherlockAndSquares \
 	SubArrayDivision \
 	TheHurdleRace \
 	UtopianTree \
