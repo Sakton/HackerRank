@@ -16,6 +16,7 @@ SUBDIRS += \
 	DivisibleSumPairs \
 	DrawingBook \
 	ElectronicsShop \
+	EqualizeTheArray \
 	FindDigits \
 	GradingStudents \
 	JumpingOnTheCloudsRevisited \
