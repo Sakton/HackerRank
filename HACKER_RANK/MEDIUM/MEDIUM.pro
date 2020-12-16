@@ -4,4 +4,5 @@ SUBDIRS += \
 	ClimbingTheLeaderboard \
 	ExtraLongFactorials \
 	FormingMagicSquare \
-	NonDivisibleSubset
+	NonDivisibleSubset \
+	QueensAttackII
