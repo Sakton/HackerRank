@@ -9,3 +9,6 @@ SOURCES += \
 
 HEADERS += \
 	queen.h
+
+DISTFILES += \
+	table.ods
