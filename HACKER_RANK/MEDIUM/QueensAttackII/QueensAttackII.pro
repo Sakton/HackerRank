@@ -8,6 +8,7 @@ SOURCES += \
         queen.cpp
 
 HEADERS += \
+	Point.h \
 	queen.h
 
 DISTFILES += \
