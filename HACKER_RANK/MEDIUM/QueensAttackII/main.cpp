@@ -83,8 +83,107 @@
 int queensAttack( int n, int k, int r_q, int c_q, std::vector< std::vector< int > >&& obstacles );
 
 int main( ) {
-  std::cout << queensAttack( 5, 3, 4, 3, { { 5, 5 }, { 4, 2 }, { 2, 3 } } );
+  // std::cout << queensAttack( 5, 3, 4, 3, { { 5, 5 }, { 4, 2 }, { 2, 3 } } );
+  std::cout << queensAttack( 4, 0, 4, 4, { } );
   return 0;
 }
 
-int queensAttack( int n, int k, int r_q, int c_q, std::vector< std::vector< int > >&& obstacles ) {}
+int queensAttack( int n, int k, int r_q, int c_q, std::vector< std::vector< int > >&& obstacles ) {
+  //Подготовка лучей
+  Point quin { r_q, c_q };
+  Point ray1 = quin.rayPoint( 0, -1, n );
+  Point ray2 = quin.rayPoint( 1, -1, n );
+  Point ray3 = quin.rayPoint( 1, 0, n );
+  Point ray4 = quin.rayPoint( 1, 1, n );
+  Point ray5 = quin.rayPoint( 0, 1, n );
+  Point ray6 = quin.rayPoint( -1, 1, n );
+  Point ray7 = quin.rayPoint( -1, 0, n );
+  Point ray8 = quin.rayPoint( -1, -1, n );
+  std::vector< Line > lines;
+  lines.push_back( Line( quin, quin ) );  // empty point
+  lines.push_back( Line( quin, ray1 ) );
+  lines.push_back( Line( quin, ray2 ) );
+  lines.push_back( Line( quin, ray3 ) );
+  lines.push_back( Line( quin, ray4 ) );
+  lines.push_back( Line( quin, ray5 ) );
+  lines.push_back( Line( quin, ray6 ) );
+  lines.push_back( Line( quin, ray7 ) );
+  lines.push_back( Line( quin, ray8 ) );
+  for ( auto& el : obstacles ) {
+    Point t( el[ 0 ], el[ 1 ] );
+    for ( auto& line : lines ) {
+      if ( line.pointBelongsLine( t ) ) {
+        line.setB( t );
+      }
+    }
+  }
+  int count = 0;
+  for ( auto& line : lines ) {
+    count += line.countPoint( );
+  }
+  return count;
+}
+
+// int queensAttack( int n, int k, int r_q, int c_q, std::vector< std::vector< int > >&& obstacles ) {
+//  //Подготовка лучей
+//  Point quin { r_q, c_q };
+//  // std::cout << quin << std::endl;
+//  Point ray1 = quin.rayPoint( 0, -1, n );
+//  std::cout << ray1 << std::endl;
+//  Point ray2 = quin.rayPoint( 1, -1, n );
+//  std::cout << ray2 << std::endl;
+//  Point ray3 = quin.rayPoint( 1, 0, n );
+//  std::cout << ray3 << std::endl;
+//  Point ray4 = quin.rayPoint( 1, 1, n );
+//  std::cout << ray4 << std::endl;
+//  Point ray5 = quin.rayPoint( 0, 1, n );
+//  std::cout << ray5 << std::endl;
+//  Point ray6 = quin.rayPoint( -1, 1, n );
+//  std::cout << ray6 << std::endl;
+//  Point ray7 = quin.rayPoint( -1, 0, n );
+//  std::cout << ray7 << std::endl;
+//  Point ray8 = quin.rayPoint( -1, -1, n );
+//  std::cout << ray8 << std::endl;
+//  std::cout << std::endl;
+
+//  std::vector< Line > lines;
+//  lines.push_back( Line( quin, quin ) );  // empty point
+//  lines.push_back( Line( quin, ray1 ) );
+//  lines.push_back( Line( quin, ray2 ) );
+//  lines.push_back( Line( quin, ray3 ) );
+//  lines.push_back( Line( quin, ray4 ) );
+//  lines.push_back( Line( quin, ray5 ) );
+//  lines.push_back( Line( quin, ray6 ) );
+//  lines.push_back( Line( quin, ray7 ) );
+//  lines.push_back( Line( quin, ray8 ) );
+
+//  for ( auto& el : lines ) {
+//    std::cout << el << " --len = " << el.countPoint( ) << std::endl;
+//  }
+
+//  std::cout << "*************" << std::endl;
+//  std::cout << std::boolalpha << lines[ 5 ].pointBelongsLine( Point( 4, 4 ) ) << std::endl;
+
+//  for ( auto& el : obstacles ) {
+//    Point t( el[ 0 ], el[ 1 ] );
+//    for ( auto& line : lines ) {
+//      if ( line.pointBelongsLine( t ) ) {
+//        line.setB( t );
+//      }
+//    }
+//  }
+
+//  std::cout << "*************" << std::endl;
+//  std::cout << "*************" << std::endl;
+
+//  for ( auto& el : lines ) {
+//    std::cout << el << " --len = " << el.countPoint( ) << std::endl;
+//  }
+
+//  int count = 0;
+//  for ( auto& line : lines ) {
+//    count += line.countPoint( );
+//  }
+
+//  return count;
+//}

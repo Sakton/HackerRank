@@ -1,42 +1,128 @@
 #ifndef POINT_H
 #define POINT_H
 #include <algorithm>
+#include <iostream>
 
 class Point {
  public:
-  Point( int x, int y ) : x_ { x }, y_ { y } {}
-
-  int lenthQuadrat( const Point &op ) { return ( x_ - op.x_ ) * ( x_ - op.x_ ) + ( y_ - op.y_ ) * ( y_ - op.y_ ); }
+  Point( int row, int col ) : row_ { row }, col_ { col }, changed { false } {}
+  int lenthQuadrat( const Point &op ) { return ( col_ - op.col_ ) * ( col_ - op.col_ ) + ( col_ - op.col_ ) * ( col_ - op.col_ ); }
   Point rayPoint( int drow, int dcol, int n ) {
     if ( drow == 0 && dcol == 0 ) return *this;
-    int r = x_;
-    int c = y_;
+    int r = row_;
+    int c = col_;
     for ( ; ( r <= ( n ) && r > 0 ) && ( c <= ( n ) && c > 0 ); r += drow, c += dcol )
       ;
     r -= drow;
     c -= dcol;
     return Point( r, c );
   }
-  int x( ) const { return x_; }
-  int y( ) const { return y_; }
+  int row( ) const { return row_; }
+  int col( ) const { return col_; }
+  void change( ) { changed = true; };
+  bool isChanged( ) const { return changed; };
 
  private:
-  int x_;
-  int y_;
+  int row_;
+  int col_;
+  bool changed;
 };
 
 class Line {
  public:
   Line( const Point &a, const Point &b ) : a_ { a }, b_ { b } { };
   bool pointBelongsLine( const Point &p ) {
-    return ( p.x( ) - a_.x( ) ) * ( b_.y( ) - a_.y( ) ) == ( p.y( ) - a_.y( ) ) * ( b_.x( ) - a_.x( ) );
-  }
+    if ( ( p.col( ) - a_.col( ) ) * ( b_.row( ) - a_.row( ) ) == ( p.row( ) - a_.row( ) ) * ( b_.col( ) - a_.col( ) ) ) {
+      int rowMax = std::max( a_.row( ), b_.row( ) );
+      int rowMin = std::min( a_.row( ), b_.row( ) );
+      int colMax = std::max( a_.col( ), b_.col( ) );
+      int colMin = std::min( a_.col( ), b_.col( ) );
 
-  int countPoint( ) { return std::max( std::abs( a_.x( ) - b_.x( ) ), std::abs( a_.y( ) - b_.y( ) ) ); }
+      if ( ( rowMin <= p.row( ) && p.row( ) <= rowMax ) && ( colMin <= p.col( ) && p.col( ) <= colMax ) ) {
+        return true;
+      }
+    }
+    return false;
+  }
+  int countPoint( ) {
+    int len = std::max( std::abs( a_.col( ) - b_.col( ) ), std::abs( a_.row( ) - b_.row( ) ) );
+    if ( b_.isChanged( ) ) --len;
+    return len;
+  }
+  Point getB( ) const { return b_; }
+  void setB( const Point &b ) {
+    b_ = b;
+    b_.change( );
+  }
 
  private:
   Point a_;
   Point b_;
 };
 
-#endif // POINT_H
+// class Point {
+// public:
+//  Point( int row, int col ) : row_ { row }, col_ { col }, changed { false } {}
+
+//  int lenthQuadrat( const Point &op ) { return ( col_ - op.col_ ) * ( col_ - op.col_ ) + ( col_ - op.col_ ) * ( col_ - op.col_ ); }
+//  Point rayPoint( int drow, int dcol, int n ) {
+//    if ( drow == 0 && dcol == 0 ) return *this;
+//    int r = row_;
+//    int c = col_;
+//    for ( ; ( r <= ( n ) && r > 0 ) && ( c <= ( n ) && c > 0 ); r += drow, c += dcol )
+//      ;
+//    r -= drow;
+//    c -= dcol;
+//    return Point( r, c );
+//  }
+//  int row( ) const { return row_; }
+//  int col( ) const { return col_; }
+//  void change( ) { changed = true; };
+//  bool isChanged( ) const { return changed; };
+
+//  friend std::ostream &operator<<( std::ostream &out, const Point &p ) { return out << "Point: " << p.row( ) << ":" << p.col( ); }
+
+// private:
+//  int row_;
+//  int col_;
+//  bool changed;
+//};
+
+// class Line {
+// public:
+//  Line( const Point &a, const Point &b ) : a_ { a }, b_ { b } { };
+//  bool pointBelongsLine( const Point &p ) {
+//    //если точка на прямой
+//    if ( ( p.col( ) - a_.col( ) ) * ( b_.row( ) - a_.row( ) ) == ( p.row( ) - a_.row( ) ) * ( b_.col( ) - a_.col( ) ) ) {
+//      //принадлежит ли она отрезку
+//      int rowMax = std::max( a_.row( ), b_.row( ) );
+//      int rowMin = std::min( a_.row( ), b_.row( ) );
+//      int colMax = std::max( a_.col( ), b_.col( ) );
+//      int colMin = std::min( a_.col( ), b_.col( ) );
+
+//      if ( ( rowMin <= p.row( ) && p.row( ) <= rowMax ) && ( colMin <= p.col( ) && p.col( ) <= colMax ) ) {
+//        return true;
+//      }
+//    }
+//    return false;
+//  }
+//  int countPoint( ) {
+//    int len = std::max( std::abs( a_.col( ) - b_.col( ) ), std::abs( a_.row( ) - b_.row( ) ) );
+//    if ( b_.isChanged( ) ) --len;
+//    return len;
+//  }
+
+//  Point getB( ) const { return b_; }
+//  void setB( const Point &b ) {
+//    b_ = b;
+//    b_.change( );
+//  }
+
+//  friend std::ostream &operator<<( std::ostream &out, const Line &l ) { return out << "Line: " << l.a_ << " : " << l.b_; }
+
+// private:
+//  Point a_;
+//  Point b_;
+//};
+
+#endif  // POINT_H
