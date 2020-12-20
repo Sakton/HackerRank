@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+	ACM_ICPC_Team \
 	AngryProfessor \
 	AppenAandDelete \
 	AppleAndOrange \
