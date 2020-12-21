@@ -29,6 +29,7 @@ SUBDIRS += \
 	SequenceEquation \
 	SherlockAndSquares \
 	SubArrayDivision \
+	TaumAndBday \
 	TheHurdleRace \
 	UtopianTree \
 	ViralAdvertising
