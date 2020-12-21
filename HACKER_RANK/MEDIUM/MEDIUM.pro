@@ -5,4 +5,5 @@ SUBDIRS += \
 	ExtraLongFactorials \
 	FormingMagicSquare \
 	NonDivisibleSubset \
+	OrganizingContainersOfBalls \
 	QueensAttackII
