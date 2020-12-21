@@ -29,10 +29,18 @@ std::string organizingContainers( std::vector< std::vector< int64_t > > containe
           container[ curRow ][ interressantCol ] += delta;
           container[ curRow ][ nextCol ] -= delta;
           container[ nextRow ][ nextCol ] += delta;
+        } else {
+          // FIXME
         }
       }
     }
   }
+
+  for ( auto &el : container ) {
+    for ( auto &line : el ) std::cout << line << " ";
+    std::cout << '\n';
+  }
+
   return { };
 }
 
