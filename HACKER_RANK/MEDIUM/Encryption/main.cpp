@@ -18,10 +18,11 @@ std::string encryption( std::string s ) {
   }
   std::string::size_type len = trim.size( );
   std::string::size_type row = std::sqrt( len );
-  std::string::size_type col = row + 1;
-  if ( row * col < len ) {
-    row = std::max( row, col );
-    col = std::max( row, col );
+  std::string::size_type col = 0;
+  if ( row * row == len ) {
+    col = row;
+  } else {
+    col = row + 1;
   }
   std::vector< std::string > vs;
   std::string::size_type pos = 0;
@@ -44,8 +45,8 @@ std::string encryption( std::string s ) {
 
 int main( ) {
   // std::cout << encryption( "havean ice day" ) << std::endl;
-  // std::cout << encryption( "feedthedog" ) << std::endl;
+  std::cout << encryption( "feedthedog" ) << std::endl;
   // std::cout << encryption( "chillout" ) << std::endl;
-  std::cout << encryption( "wclwfoznbmyycxvaxagjhtexdkwjqhlojykopldsxesbbnezqmixfpujbssrbfhlgubvfhpfliimvmnny" ) << std::endl;
+  // std::cout << encryption( "wclwfoznbmyycxvaxagjhtexdkwjqhlojykopldsxesbbnezqmixfpujbssrbfhlgubvfhpfliimvmnny" ) << std::endl;
   // wmgjpnull cyjqlejgi lyhhdzbui wctlsqsbm fxeoxmsvv ovxjeirfm zadysxbhn nxkkbffpn bawobphfy
 }
