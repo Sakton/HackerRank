@@ -5,3 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp
+
+DISTFILES += \
+	data.txt \
+	resultes.txt
