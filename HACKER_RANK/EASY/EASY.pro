@@ -6,6 +6,7 @@ SUBDIRS += \
 	AppenAandDelete \
 	AppleAndOrange \
 	BeautifulDaysAtTheMovies \
+	BeautifulTriplets \
 	BetweenTwoSets \
 	BillDivision \
 	BreakingTheRecords \
@@ -23,6 +24,7 @@ SUBDIRS += \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	MigratoryBirds \
+	ModifiedKaprekarNumbers \
 	NumberLineJumps \
 	PickingNumbers \
 	SaveThePrisoner \
