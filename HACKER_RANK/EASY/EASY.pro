@@ -11,6 +11,7 @@ SUBDIRS += \
 	BillDivision \
 	BreakingTheRecords \
 	CatsAndMouse \
+	ChocolateFeast \
 	CircularArrayRotation \
 	CutTheSticks \
 	DayOfTheProgrammer \
@@ -21,6 +22,7 @@ SUBDIRS += \
 	EqualizeTheArray \
 	FindDigits \
 	GradingStudents \
+	HalloweenSale \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	MigratoryBirds \
