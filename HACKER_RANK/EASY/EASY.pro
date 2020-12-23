@@ -24,6 +24,7 @@ SUBDIRS += \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	MigratoryBirds \
+	MinimumDistances \
 	ModifiedKaprekarNumbers \
 	NumberLineJumps \
 	PickingNumbers \
