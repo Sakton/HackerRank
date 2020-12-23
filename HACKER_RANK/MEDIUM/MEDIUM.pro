@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+	BiggerIsGreater \
 	ClimbingTheLeaderboard \
 	Encryption \
 	ExtraLongFactorials \
