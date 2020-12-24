@@ -32,6 +32,7 @@ SUBDIRS += \
 	PickingNumbers \
 	SaveThePrisoner \
 	SequenceEquation \
+	ServiceLane \
 	SherlockAndSquares \
 	SubArrayDivision \
 	TaumAndBday \
