@@ -25,6 +25,7 @@ SUBDIRS += \
 	HalloweenSale \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
+	LisasWorkbook \
 	MigratoryBirds \
 	MinimumDistances \
 	ModifiedKaprekarNumbers \
