@@ -21,6 +21,7 @@ SUBDIRS += \
 	ElectronicsShop \
 	EqualizeTheArray \
 	FindDigits \
+	FlatlandSpaceStations \
 	GradingStudents \
 	HalloweenSale \
 	JumpingOnTheCloudsRevisited \
