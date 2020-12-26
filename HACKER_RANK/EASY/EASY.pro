@@ -20,6 +20,7 @@ SUBDIRS += \
 	DrawingBook \
 	ElectronicsShop \
 	EqualizeTheArray \
+	FairRations \
 	FindDigits \
 	FlatlandSpaceStations \
 	GradingStudents \
