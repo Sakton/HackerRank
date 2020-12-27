@@ -11,6 +11,7 @@ SUBDIRS += \
 	BillDivision \
 	BreakingTheRecords \
 	CatsAndMouse \
+	CavityMap \
 	ChocolateFeast \
 	CircularArrayRotation \
 	CutTheSticks \
