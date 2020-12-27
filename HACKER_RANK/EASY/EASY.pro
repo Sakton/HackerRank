@@ -29,6 +29,7 @@ SUBDIRS += \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	LisasWorkbook \
+	ManasaAndStones \
 	MigratoryBirds \
 	MinimumDistances \
 	ModifiedKaprekarNumbers \
