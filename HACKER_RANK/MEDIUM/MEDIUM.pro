@@ -8,4 +8,5 @@ SUBDIRS += \
 	FormingMagicSquare \
 	NonDivisibleSubset \
 	OrganizingContainersOfBalls \
-	QueensAttackII
+	QueensAttackII \
+	TheGridSearch
