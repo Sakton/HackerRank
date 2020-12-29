@@ -26,6 +26,7 @@ SUBDIRS += \
 	FlatlandSpaceStations \
 	GradingStudents \
 	HalloweenSale \
+	HappyLadybugs \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	LisasWorkbook \
