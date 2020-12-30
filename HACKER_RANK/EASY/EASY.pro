@@ -40,6 +40,7 @@ SUBDIRS += \
 	SequenceEquation \
 	ServiceLane \
 	SherlockAndSquares \
+	StrangeCounter \
 	SubArrayDivision \
 	TaumAndBday \
 	TheHurdleRace \
