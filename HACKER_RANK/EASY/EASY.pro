@@ -10,7 +10,6 @@ SUBDIRS += \
 	BetweenTwoSets \
 	BillDivision \
 	BreakingTheRecords \
-	CamelCase \
 	CatsAndMouse \
 	CavityMap \
 	ChocolateFeast \
