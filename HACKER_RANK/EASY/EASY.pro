@@ -28,6 +28,7 @@ SUBDIRS += \
 	GradingStudents \
 	HalloweenSale \
 	HappyLadybugs \
+	IntroToTutorialChallenges \
 	JumpingOnTheCloudsRevisited \
 	LibraryFine \
 	LisasWorkbook \
