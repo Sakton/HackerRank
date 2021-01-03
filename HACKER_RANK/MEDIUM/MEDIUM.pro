@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+	3DSurfaceArea \
 	BiggerIsGreater \
 	ClimbingTheLeaderboard \
 	Encryption \
