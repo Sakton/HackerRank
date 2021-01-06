@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
 	3DSurfaceArea \
+	AbsolutePermutation \
 	BiggerIsGreater \
 	ClimbingTheLeaderboard \
 	Encryption \
