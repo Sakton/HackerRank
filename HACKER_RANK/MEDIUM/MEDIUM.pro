@@ -11,4 +11,5 @@ SUBDIRS += \
 	NonDivisibleSubset \
 	OrganizingContainersOfBalls \
 	QueensAttackII \
+	TheBombermanGame \
 	TheGridSearch
