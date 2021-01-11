@@ -5,6 +5,7 @@ SUBDIRS += \
 	AbsolutePermutation \
 	BiggerIsGreater \
 	ClimbingTheLeaderboard \
+	EmasSupercomputer \
 	Encryption \
 	ExtraLongFactorials \
 	FormingMagicSquare \
