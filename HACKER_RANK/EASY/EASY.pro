@@ -8,6 +8,7 @@ SUBDIRS += \
 	BeautifulDaysAtTheMovies \
 	BeautifulTriplets \
 	BetweenTwoSets \
+	BigSorting \
 	BillDivision \
 	BreakingTheRecords \
 	CamelCase \
