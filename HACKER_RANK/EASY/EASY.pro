@@ -45,6 +45,7 @@ SUBDIRS += \
 	SherlockAndSquares \
 	StrangeCounter \
 	SubArrayDivision \
+	SuperReducedString \
 	TaumAndBday \
 	TheHurdleRace \
 	UtopianTree \
