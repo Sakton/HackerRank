@@ -44,6 +44,7 @@ SUBDIRS += \
 	ServiceLane \
 	SherlockAndSquares \
 	StrangeCounter \
+	StrongPassword \
 	SubArrayDivision \
 	SuperReducedString \
 	TaumAndBday \
