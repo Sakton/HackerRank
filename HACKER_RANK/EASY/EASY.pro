@@ -39,6 +39,7 @@ SUBDIRS += \
 	ModifiedKaprekarNumbers \
 	NumberLineJumps \
 	PickingNumbers \
+	Quicksort_1_Partition \
 	SaveThePrisoner \
 	SequenceEquation \
 	ServiceLane \
