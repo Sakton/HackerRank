@@ -8,6 +8,7 @@ SUBDIRS += \
 	BeautifulDaysAtTheMovies \
 	BeautifulTriplets \
 	BetweenTwoSets \
+	BigSorting \
 	BillDivision \
 	BreakingTheRecords \
 	CamelCase \
@@ -38,12 +39,15 @@ SUBDIRS += \
 	ModifiedKaprekarNumbers \
 	NumberLineJumps \
 	PickingNumbers \
+	Quicksort_1_Partition \
 	SaveThePrisoner \
 	SequenceEquation \
 	ServiceLane \
 	SherlockAndSquares \
 	StrangeCounter \
+	StrongPassword \
 	SubArrayDivision \
+	SuperReducedString \
 	TaumAndBday \
 	TheHurdleRace \
 	TwoCharacters \
