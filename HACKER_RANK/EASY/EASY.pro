@@ -50,6 +50,5 @@ SUBDIRS += \
 	SuperReducedString \
 	TaumAndBday \
 	TheHurdleRace \
-	TwoCharacters \
 	UtopianTree \
 	ViralAdvertising
