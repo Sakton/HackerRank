@@ -46,5 +46,6 @@ SUBDIRS += \
 	SubArrayDivision \
 	TaumAndBday \
 	TheHurdleRace \
+	TwoCharacters \
 	UtopianTree \
 	ViralAdvertising
