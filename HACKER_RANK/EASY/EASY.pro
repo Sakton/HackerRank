@@ -52,4 +52,5 @@ SUBDIRS += \
 	TheHurdleRace \
 	TwoCharacters \
 	UtopianTree \
-	ViralAdvertising
+	ViralAdvertising \
+	WeightedUniformStrings
