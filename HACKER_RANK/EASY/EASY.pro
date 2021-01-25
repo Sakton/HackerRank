@@ -11,6 +11,7 @@ SUBDIRS += \
 	BigSorting \
 	BillDivision \
 	BreakingTheRecords \
+	CaesarCipher \
 	CamelCase \
 	CatsAndMouse \
 	CavityMap \
@@ -27,6 +28,7 @@ SUBDIRS += \
 	FindDigits \
 	FlatlandSpaceStations \
 	GradingStudents \
+	HackerRankInString \
 	HalloweenSale \
 	HappyLadybugs \
 	IntroToTutorialChallenges \
@@ -34,6 +36,7 @@ SUBDIRS += \
 	LibraryFine \
 	LisasWorkbook \
 	ManasaAndStones \
+	MarsExploration \
 	MigratoryBirds \
 	MinimumDistances \
 	ModifiedKaprekarNumbers \

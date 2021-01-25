@@ -5,7 +5,6 @@ std::vector< int > quickSort( std::vector< int > arr ) {
   int pivot = arr[ 0 ];
   int l = 1;
   int r = arr.size( ) - 1;
-
   while ( l < r ) {
     while ( arr[ l ] < pivot ) ++l;
     while ( pivot < arr[ r ] ) --r;
