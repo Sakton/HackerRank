@@ -44,6 +44,7 @@ SUBDIRS += \
 	PickingNumbers \
 	Quicksort_1_Partition \
 	SaveThePrisoner \
+	SeparateTheNumbers \
 	SequenceEquation \
 	ServiceLane \
 	SherlockAndSquares \
