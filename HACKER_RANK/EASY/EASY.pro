@@ -27,6 +27,7 @@ SUBDIRS += \
 	FairRations \
 	FindDigits \
 	FlatlandSpaceStations \
+	FunnyString \
 	GradingStudents \
 	HackerRankInString \
 	HalloweenSale \
