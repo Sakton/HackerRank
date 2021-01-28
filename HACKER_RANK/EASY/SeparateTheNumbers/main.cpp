@@ -1,88 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-// TODO !!! THIS BAD ALGORITHM
-void separateNumbers( std::string s ) {
-  if ( s[ 0 ] == '0' ) {
-    std::cout << "NO" << std::endl;
-    return;
-  }
-
-  if ( s.size( ) <= 1 ) {
-    std::cout << "NO" << std::endl;
-    return;
-  }
-  std::string::size_type pos = 0;
-  // 1. получить 1 и 2 число
-  std::string::size_type len = 1;
-  std::string firstNum;
-  std::string startNumString;
-  while ( len <= s.size( ) / 2 ) {
-    std::string firstStrNum = s.substr( 0, len );
-    //узнаем какое число ждем дальше
-    int64_t firstInt = std::stoll( firstStrNum );
-    int64_t secondIntOgidanie = firstInt + 1;
-    std::string secondStringOgidanie = std::to_string( secondIntOgidanie );
-    std::string second = s.substr( len, secondStringOgidanie.size( ) );
-    if ( secondStringOgidanie == second ) {
-      firstNum = firstStrNum;
-      startNumString = second;
-      pos += firstStrNum.size( ) + second.size( );
-      break;
-    } else {
-      len++;
-    }
-  }
-
-  if ( startNumString.empty( ) ) {
-    std::cout << "NO" << std::endl;
-    return;
-  }
-
-  // c 3 и далее
-  while ( ( pos + startNumString.size( ) ) <= s.size( ) ) {
-    int64_t a = std::stoll( startNumString );
-    int64_t b = a + 1;
-    std::string bStr = std::to_string( b );
-    std::string secondStr = s.substr( pos, bStr.size( ) );
-    if ( bStr != secondStr ) {
-      std::cout << "NO" << std::endl;
-      return;
-    }
-    startNumString = bStr;
-    pos += bStr.size( );
-    a = b;
-  }
-
-  std::cout << "YES " << std::stoll( firstNum ) << std::endl;
-}
-
-// void separateNumbers( std::string s ) {
-//  std::vector< int > t( s.size( ), 0 );
-//  for ( std::string::size_type i = 0; i < s.size( ); ++i ) {
-//    t[ i ] = s[ i ] - '0';
-//  }
-//}
-
-// void separateNumbers( std::string s ) {
-//  using sType = std::string;
-//  int pos = 1;
-//  int first = std::stoi( s.substr( 0, pos ) );
-//  int tempFirst = first;
-//  int tempSecond = std::stoi( s.substr( pos, std::to_string( first + 1 ).size( ) ) );
-//  for ( ; pos < s.size( ) / 2; ) {
-//    if ( ( tempSecond - tempFirst ) == 1 ) {
-//      ++tempFirst;
-//      pos += std::to_string( tempFirst ).size( );
-//      tempSecond = std::stoi( s.substr( pos, std::to_string( tempFirst + 1 ).size( ) ) );
-//    } else {
-//      std::cout << "No" << std::endl;
-//    }
-//  }
-//  std::cout << "Yes " << first << std::endl;
-//}
-
 /*
 99910001001
 7891011
@@ -99,6 +17,17 @@ void separateNumbers( std::string s ) {
 13
 1
 */
+
+void separateNumbers( std::string s ) {
+  std::string t, a;
+  for ( std::string::size_type l = 1; l <= s.size( ) / 2 && s != t; l++ ) {
+    a = t = s.substr( 0, l );
+    for ( int i = 1; t.size( ) < s.size( ); i++ ) {
+      t += std::to_string( stoll( a ) + i );
+    }
+  }
+  std::cout << ( s == t ? "YES " + a : "NO" ) << std::endl;
+}
 
 int main( ) {
   //  separateNumbers( "1011" );
