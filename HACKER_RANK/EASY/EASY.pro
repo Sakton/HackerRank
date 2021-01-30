@@ -28,6 +28,7 @@ SUBDIRS += \
 	FindDigits \
 	FlatlandSpaceStations \
 	FunnyString \
+	Gemstones \
 	GradingStudents \
 	HackerRankInString \
 	HalloweenSale \
