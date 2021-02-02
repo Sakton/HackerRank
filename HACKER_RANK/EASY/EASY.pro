@@ -5,6 +5,7 @@ SUBDIRS += \
 	AngryProfessor \
 	AppenAandDelete \
 	AppleAndOrange \
+	BeautifulBinaryString \
 	BeautifulDaysAtTheMovies \
 	BeautifulTriplets \
 	BetweenTwoSets \
