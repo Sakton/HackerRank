@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
 	ACM_ICPC_Team \
+	AlternatingCharacters \
 	AngryProfessor \
 	AppenAandDelete \
 	AppleAndOrange \
@@ -29,6 +30,7 @@ SUBDIRS += \
 	FindDigits \
 	FlatlandSpaceStations \
 	FunnyString \
+	Gemstones \
 	GradingStudents \
 	HackerRankInString \
 	HalloweenSale \
