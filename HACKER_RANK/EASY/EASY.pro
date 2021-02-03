@@ -19,6 +19,7 @@ SUBDIRS += \
 	CavityMap \
 	ChocolateFeast \
 	CircularArrayRotation \
+	ClosestNumbers \
 	CutTheSticks \
 	DayOfTheProgrammer \
 	DesignerPDViewer \
