@@ -46,6 +46,7 @@ SUBDIRS += \
 	MinimumDistances \
 	ModifiedKaprekarNumbers \
 	NumberLineJumps \
+	PalindromeIndex \
 	PickingNumbers \
 	Quicksort_1_Partition \
 	SaveThePrisoner \
