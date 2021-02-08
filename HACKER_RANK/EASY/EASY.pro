@@ -3,6 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
 	ACM_ICPC_Team \
 	AlternatingCharacters \
+	Anagram \
 	AngryProfessor \
 	AppenAandDelete \
 	AppleAndOrange \
