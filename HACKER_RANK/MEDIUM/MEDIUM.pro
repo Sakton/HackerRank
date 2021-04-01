@@ -9,6 +9,7 @@ SUBDIRS += \
 	Encryption \
 	ExtraLongFactorials \
 	FormingMagicSquare \
+	FrequencyQueries \
 	NonDivisibleSubset \
 	OrganizingContainersOfBalls \
 	QueensAttackII \
